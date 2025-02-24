@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services de Santé en Afrique</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-top: 20px;
+            font-size: 2.5em;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery .card {
+            position: relative;
+            width: 45%;
+            height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            cursor: pointer;
+            transform: scale(1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery .card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery .card:hover .overlay {
+            opacity: 1;
+        }
+
+        .gallery .card .overlay h2 {
+            font-size: 1.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel {
+            position: relative;
+            max-width: 80%;
+            margin: 30px auto;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel img:hover {
+            transform: scale(1.05);
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 10;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <h1>Les Services de Santé en Afrique</h1>
+
+    <div class="carousel">
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <img src="image1.jpg" alt="Service Médical 1">
+        <img src="image2.jpg" alt="Service Médical 2" style="display: none;">
+        <img src="image3.jpg" alt="Service Médical 3" style="display: none;">
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <div class="gallery">
+        <div class="card">
+            <img src="image4.jpg" alt="Consultation Médicale">
+            <div class="overlay">
+                <h2>Consultation Médicale</h2>
+            </div>
+        </div>
+        <div class="card">
+            <img src="image5.jpg" alt="Traitement Chirurgical">
+            <div class="overlay">
+                <h2>Traitement Chirurgical</h2>
+            </div>
+        </div>
+        <div class="card">
+            <img src="image6.jpg" alt="Soins d'Urgence">
+            <div class="overlay">
+                <h2>Soins d'Urgence</h2>
+            </div>
+        </div>
+        <div class="card">
+            <img src="image7.jpg" alt="Médecine Préventive">
+            <div class="overlay">
+                <h2>Médecine Préventive</h2>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+
+        function moveSlide(step) {
+            const slides = document.querySelectorAll('.carousel img');
+            slides[slideIndex].style.display = 'none';
+            slideIndex = (slideIndex + step + slides.length) % slides.length;
+            slides[slideIndex].style.display = 'block';
+        }
+
+        // Initialize carousel to show the first image
+        document.querySelectorAll('.carousel img')[0].style.display = 'block';
+    </script>
+</body>
+</html>
